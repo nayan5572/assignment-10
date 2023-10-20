@@ -27,7 +27,7 @@ const HomeProduct = () => {
                     {
                         imgData && imgData.map(img => <div className='rounded-lg h-full relative' key={img.id}>
                             <img className='h-96 w-96 rounded-lg' src={img.img} alt="" />
-                            <span className='absolute top-2 left-2 bg-warning px-3 py-1 rounded-md'>{img.name}</span>
+                            <span className='absolute top-2 left-2 bg-success px-3 py-1 rounded-md'>{img.name}</span>
                         </div>)
                     }
                 </div>

@@ -10,7 +10,7 @@ const Header = () => {
         <div className="divider lg:divider-horizontal"></div>
         <li><NavLink className={({ isActive }) => isActive ? 'underline' : ''} to="/myCard">My Card</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? 'underline' : ''} to="/addProduct">Add Product</NavLink></li>
-        <li><Link className="btn btn-error flex items-center content-center" to="/login">Login</Link></li>
+        <li><Link className="btn btn-success flex items-center content-center" to="/login">Login</Link></li>
 
     </>
 

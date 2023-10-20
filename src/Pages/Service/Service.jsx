@@ -1,15 +1,20 @@
+import { useEffect } from "react";
 import { FaGift, FaRibbon, FaShippingFast, FaSyncAlt } from "react-icons/fa";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+
 
 const Service = () => {
 
-    // useEffect(() => {
-    //     AOS.init();
-    // }, [])
+    useEffect(() => {
+        AOS.init({duration: 2000})
+    }, [])
 
     return (
         <div
-            data-aos="slide-right"
-            data-aos-delay="400"
+            // data-aos="slide-right"
+            // data-aos-delay="400"
+            data-AOS = "fade-up"
         >
             <div className='my-10'>
                 <h3 className="font-bold text-4xl">Our Services <span className='text-success'>.</span></h3>

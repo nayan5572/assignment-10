@@ -1,32 +1,39 @@
 
 const AddProduct = () => {
 
-    const handleAddToy = (event) => {
+    const handleAddProduct = (event) => {
         event.preventDefault();
         const form = event.target;
         const pictureURL = form.pictureUrl.value;
         const name = form.name.value;
-        const sellerName = form.sellerName.value;
-        const sellerEmail = form.sellerEmail.value;
+        const brand = form.brandName.value;
         const price = parseFloat(form.price.value);
         const rating = form.rating.value;
-        const availableQuantity = form.availableQuantity.value;
-        const subcategory = form.subcategory.value;
         const description = form.description.value;
-        console.log(pictureURL, name, sellerName, sellerEmail, price, rating,availableQuantity,subcategory, description);
+        console.log(pictureURL, name, price, rating, description);
 
-        const newtProduct = {
+        const newProduct = {
             pictureURL,
             name,
-            sellerName,
-            sellerEmail,
+            brand,
             price,
             rating,
-            availableQuantity,
-            subcategory,
             description,
         }
-        console.log(newtProduct);
+        console.log(newProduct);
+
+        // send data to the server
+        fetch(`http://localhost:2000/addProduct`, {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     }
 
 
@@ -37,7 +44,7 @@ const AddProduct = () => {
             </h1>
             <div className="divider"></div>
             <div className='bg-slate-400 py-10 px-10'>
-                <form onSubmit={handleAddToy}>
+                <form onSubmit={handleAddProduct}>
                     <div className=''>
                         <h1 className='text-xl font-semibold my-3'>Name:</h1>
                         <input
@@ -62,6 +69,7 @@ const AddProduct = () => {
                         <input
                             className='border-b-2 rounded-md px-5 border-black border-opacity-5 py-3 outline-none w-full text-black'
                             type="text"
+                            placeholder="Brand Name"
                             required
                             name='brandName'
                         />

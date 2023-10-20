@@ -23,7 +23,8 @@ const router = createBrowserRouter([
         },
         {
             path: "/myCard",
-            element: <MyCard></MyCard>
+            element: <MyCard></MyCard>,
+            loader: ()=> fetch('http://localhost:2000/addProduct')
         },
         {
             path: "/blog",
