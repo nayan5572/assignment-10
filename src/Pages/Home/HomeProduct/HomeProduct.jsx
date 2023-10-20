@@ -8,8 +8,15 @@ const HomeProduct = () => {
             .then(res => res.json())
             .then(data => setImgData(data))
     }, [])
+
+    const handleDetails = e =>{
+        e.preventDefault();
+        console.log('Clicking test', e);
+    }
+
+
     return (
-        <div className='my-12 px-5 md:px-0'>
+        <div className='my-12 px-5 md:px-0' onClick={handleDetails}>
             <h3 className="font-bold text-4xl">Our Products </h3>
             <div className="divider"></div>
             <div
