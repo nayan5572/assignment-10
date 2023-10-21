@@ -1,7 +1,12 @@
+import { useLoaderData } from "react-router-dom";
+// import Swal from "sweetalert2";
 
-const AddProduct = () => {
+const UpdateData = () => {
+    const myData = useLoaderData();
+    const { _id, pictureURL, name, brand, price, rating, description } = myData;
 
-    const handleAddProduct = (event) => {
+
+    const handleUpdateProduct = event => {
         event.preventDefault();
         const form = event.target;
         const pictureURL = form.pictureURL.value;
@@ -10,7 +15,7 @@ const AddProduct = () => {
         const price = parseFloat(form.price.value);
         const rating = form.rating.value;
         const description = form.description.value;
-        console.log(pictureURL, name, price, rating, description);
+        // console.log(pictureURL, name, price, rating, description);
 
         const newProduct = {
             pictureURL,
@@ -20,31 +25,30 @@ const AddProduct = () => {
             rating,
             description,
         }
-        console.log(newProduct);
-
         // send data to the server
-        fetch(`http://localhost:2000/addProduct`, {
-            method: 'POST',
+        fetch(`http://localhost:2000/addProduct/${_id}`, {
+            method:"PUT",
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(newProduct)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if(data.modifiedCount > 0){
+                    alert('Successfully Update');
+                }
             })
     }
-
 
     return (
         <div className='my-10'>
             <h1 className='text-4xl font-bold'>
-                Now <span className='text-success'>Add A Product</span>
+                Now <span className='text-success'>Update A Product</span>
             </h1>
             <div className="divider"></div>
             <div className='bg-slate-400 py-10 px-10'>
-                <form onSubmit={handleAddProduct}>
+                <form onSubmit={handleUpdateProduct}>
                     <div className=''>
                         <h1 className='text-xl font-semibold my-3'>Name:</h1>
                         <input
@@ -53,6 +57,7 @@ const AddProduct = () => {
                             required
                             name='name'
                             placeholder='Name'
+                            defaultValue={name}
                         />
 
                         <h1 className='text-xl font-semibold my-3'>Picture URL:</h1>
@@ -62,6 +67,7 @@ const AddProduct = () => {
                             required
                             name='pictureURL'
                             placeholder='Picture URL of the toy'
+                            defaultValue={pictureURL}
                         />
                     </div>
                     <div>
@@ -72,6 +78,7 @@ const AddProduct = () => {
                             placeholder="Brand Name"
                             required
                             name='brand'
+                            defaultValue={brand}
                         />
                     </div>
                     <div>
@@ -82,6 +89,7 @@ const AddProduct = () => {
                             required
                             name='price'
                             placeholder='Price'
+                            defaultValue={price}
                         />
                     </div>
                     <div>
@@ -92,6 +100,7 @@ const AddProduct = () => {
                             required
                             name='rating'
                             placeholder='Rating'
+                            defaultValue={rating}
                         />
 
                     </div>
@@ -103,13 +112,15 @@ const AddProduct = () => {
                             required
                             name='description'
                             placeholder='Detail description'
+                            defaultValue={description}
                         />
                     </div>
-                    <button className='my-10 btn btn-block btn-success'>Add Product</button>
+                    {/* <button className='my-10 btn btn-block btn-success'>Add Product</button> */}
+                    <input className="btn btn-block btn-success mt-8" type="submit" value="Update Product" />
                 </form>
             </div>
         </div>
     );
 };
 
-export default AddProduct;
+export default UpdateData;

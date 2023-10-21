@@ -1,54 +1,34 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
-import Swal from "sweetalert2";
+import { Link, useLoaderData } from "react-router-dom";
+// import Swal from "sweetalert2";
 
 const MyCard = () => {
-    const loaderData = useLoaderData();
+    const loadedUsers = useLoaderData();
 
-    const [users, setUsers] = useState(loaderData);
+    const [users, setUsers] = useState(loadedUsers);
 
 
     // handle delete data from server
-    const handleDelete = id => {
-        console.log("Handle Delete", id);
+    const handleDelete = (_id) => {
 
-        fetch(`http://localhost:2000/addProduct/${id}`, {
+        fetch(`http://localhost:2000/addProduct/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
-                    console.log('deleted successfully');
+                    console.log('deleted successfully', data);
+
                     // remove the user from the UI
-                    const remainingUsers = users.filter(user => user._id !== id);
+                    const remainingUsers = users && users.filter(user => user._id !== _id);
                     setUsers(remainingUsers);
                 }
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      )
-                    }
-                  })
             })
     }
 
-
-
-
     return (
         <div>
-            <h2>My Card: {loaderData.length}</h2>
+            <h2>My Card: {users.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -69,7 +49,7 @@ const MyCard = () => {
                     </thead>
                     <tbody>
                         {
-                            loaderData.map(product => <tr key={product._id}>
+                            users.map(product => <tr key={product._id}>
                                 <th>
                                     <label>
                                         <input type="checkbox" className="checkbox" />
@@ -104,7 +84,9 @@ const MyCard = () => {
                                     <h2>{product.rating}</h2>
                                 </td>
                                 <th>
-                                    <button className="btn btn-success">Update</button>
+                                    <Link to={`/updateData/${product._id}`}>
+                                        <button className="btn btn-success">Update</button>
+                                    </Link>
                                 </th>
                             </tr>)
                         }
