@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 // import Swal from "sweetalert2";
 
 const UpdateData = () => {
@@ -36,7 +37,11 @@ const UpdateData = () => {
             .then(res => res.json())
             .then(data => {
                 if(data.modifiedCount > 0){
-                    alert('Successfully Update');
+                    Swal.fire(
+                        'Updated!',
+                        'Your file has been Successfully Updated.',
+                        'success'
+                    )
                 }
             })
     }

@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
@@ -15,18 +14,6 @@ const Login = () => {
     const location = useLocation()
     const from = location.state?.pathname || "/"
     const [error, setError] = useState("")
-
-    // const location = useLocation();
-    // const naviGate = useNavigate();
-
-
-    // const handleLogin = e => {
-    //     e.preventDefault()
-    //     const form = new FormData(e.currentTarget);
-    //     const email = form.get('email');
-    //     const password = form.get('password');
-    //     console.log(email, password);
-    // }
 
     const handelLoginForm = (event) => {
         event.preventDefault();

@@ -10,22 +10,22 @@ const Register = () => {
     const from = location.state?.pathname || "/"
     const { signUpUser, updateUserinfo } = useContext(AuthContext)
 
-    const handelRegistarform = (event) => {
+    const handelRegisterForm = (event) => {
         event.preventDefault()
         const form = event.target
         const name = form.name.value
         const email = form.email.value
-        const passsword = form.password.value
+        const password = form.password.value
         const url = form.url.value
-        const ConfirmPasssword = form.ConfirmPassword.value
-        console.log(name, email, passsword, ConfirmPasssword);
-        if (passsword !== ConfirmPasssword) {
+        const ConfirmPassword = form.ConfirmPassword.value
+        console.log(name, email, password, ConfirmPassword);
+        if (password !== ConfirmPassword) {
             setError("Password Cannot Match")
             return
         }
-        signUpUser(email, passsword)
-            .then(resulr => {
-                console.log(resulr.user);
+        signUpUser(email, password)
+            .then(result => {
+                console.log(result.user);
                 setError("")
                 updateUserinfo(name, url)
                 form.reset()
@@ -43,12 +43,12 @@ const Register = () => {
                 <div className='border border-black px-9 py-2 rounded-md border-opacity-60'>
                     <h5 className='text-2xl mt-2 font-bold'>Signup</h5>
                     <p className='font-semibold text-error my-3'>{error}</p>
-                    <form onSubmit={handelRegistarform} className='my-12'>
+                    <form onSubmit={handelRegisterForm} className='my-12'>
                         <input className='border-l-none border-b-2 rounded-md px-5 border-black border-opacity-5 py-3 outline-none w-full text-black' type="name" required name='name' placeholder='Your Name' />
                         <input className='border-l-none border-b-2 rounded-md px-5 mt-10 border-black border-opacity-5 py-3 outline-none w-full text-black' type="email" required name='email' placeholder='Username or Email' />
                         <input className='border-l-none border-b-2 rounded-md px-5 mt-10 border-black border-opacity-5 py-3 outline-none w-full text-black' type="url" required name='url' placeholder='PhotoUrl' />
-                        <input className='border-l-none border-b-2 rounded-md px-5 mt-10 border-black border-opacity-5 py-3 outline-none w-full text-black' type="password" required name='password' placeholder='Passowrd' />
-                        <input className='border-l-none border-b-2 mt-10 rounded-md px-5 border-black border-opacity-5 py-3 outline-none w-full text-black' type="password" required name='ConfirmPassword' placeholder='Confirm Passowrd' />
+                        <input className='border-l-none border-b-2 rounded-md px-5 mt-10 border-black border-opacity-5 py-3 outline-none w-full text-black' type="password" required name='password' placeholder='Password' />
+                        <input className='border-l-none border-b-2 mt-10 rounded-md px-5 border-black border-opacity-5 py-3 outline-none w-full text-black' type="password" required name='ConfirmPassword' placeholder='Confirm Password' />
                         <div className='mt-5 flex items-center justify-between'>
                             <div>
                                 <input type="checkbox" name="checkbox" id="" /> <span className='ml-2'>Remember me</span>
