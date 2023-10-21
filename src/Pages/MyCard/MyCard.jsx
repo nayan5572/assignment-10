@@ -46,7 +46,7 @@ const MyCard = () => {
     }
 
     return (
-        <div>
+        <div className="dark:bg-black dark:text-white">
             <h2>My Card: {myData.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">

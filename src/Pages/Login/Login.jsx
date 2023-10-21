@@ -53,7 +53,7 @@ const Login = () => {
 
     return (
         <div>
-            <div className="mt-20 mb-20">
+            <div className="mt-20 mb-20 dark:bg-black dark:text-white">
                 <h2 className="text-3xl text-center">Please Login</h2>
                 <p className='text-error font-semibold my-3'>{error}</p>
                 <form onSubmit={handelLoginForm} className="md:w-3/4 lg:w-1/2 mx-auto">

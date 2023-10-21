@@ -9,7 +9,7 @@ const ViewProductDetails = () => {
 
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl mx-auto pt-12">
+        <div className="card w-96 bg-base-100 shadow-xl mx-auto pt-12 dark:bg-black dark:text-white">
             <figure><img src={pictureURL} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="text-center font-bold text-3xl">

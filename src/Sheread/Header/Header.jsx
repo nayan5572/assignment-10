@@ -18,9 +18,12 @@ const Header = () => {
         <div className="divider lg:divider-horizontal"></div>
     </>
 
+    const toggleTheme = () => {
+        document.documentElement.classList.toggle('dark');
+    }
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 dark:bg-black dark:text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -64,8 +67,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Learn More</a>
-
+                <a onClick={toggleTheme} className="btn">Dark Mode</a>
             </div>
         </div>
     );

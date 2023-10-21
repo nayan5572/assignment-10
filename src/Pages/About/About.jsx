@@ -12,7 +12,7 @@ const About = () => {
 
 
     return (
-        <div className='my-10 px-6 md:px-0' data-AOS = "fade-up">
+        <div className='my-10 px-6 md:px-0 dark:bg-black dark:text-white' data-AOS = "fade-up">
             <h3 className="font-bold text-4xl">About Us </h3>
             <div className="divider"></div>
             <div className='flex gap-24 items-center flex-col md:flex-row'>

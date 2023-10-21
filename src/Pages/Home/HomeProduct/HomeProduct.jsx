@@ -16,7 +16,7 @@ const HomeProduct = () => {
 
 
     return (
-        <div className='my-12 px-5 md:px-0' onClick={handleDetails}>
+        <div className='my-12 px-5 md:px-0 dark:bg-black dark:text-white' onClick={handleDetails}>
             <h3 className="font-bold text-4xl">Our Products </h3>
             <div className="divider"></div>
             <div

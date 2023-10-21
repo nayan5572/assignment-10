@@ -47,7 +47,7 @@ const UpdateData = () => {
     }
 
     return (
-        <div className='my-10'>
+        <div className='my-10 dark:bg-black dark:text-white'>
             <h1 className='text-4xl font-bold'>
                 Now <span className='text-success'>Update A Product</span>
             </h1>

@@ -15,7 +15,7 @@ const AllProduct = () => {
 
  
         return (
-            <div>
+            <div className="dark:bg-black dark:text-white">
                 {
                 productData.length === 0 ? "No Product Found" : ""}
                 <div className="overflow-x-auto w-full my-10">

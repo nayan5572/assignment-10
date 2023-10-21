@@ -38,7 +38,7 @@ const Register = () => {
 
     }
     return (
-        <div className='detbginlogin mb-10 rounded-lg'>
+        <div className='detbginlogin mb-10 rounded-lg dark:bg-black dark:text-white'>
             <div className='md:mx-32 md:w-[40%] py-32  px-5'>
                 <div className='border border-black px-9 py-2 rounded-md border-opacity-60'>
                     <h5 className='text-2xl mt-2 font-bold'>Signup</h5>

@@ -16,7 +16,7 @@ const Service = () => {
             // data-aos-delay="400"
             data-AOS = "fade-up"
         >
-            <div className='my-10'>
+            <div className='my-10 dark:bg-black dark:text-white'>
                 <h3 className="font-bold text-4xl">Our Services <span className='text-success'>.</span></h3>
                 <div className="divider"></div>
                 <div className='flex justify-between flex-wrap md:flex-nowrap '>

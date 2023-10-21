@@ -1,8 +1,8 @@
 import img1 from '../../assets/logo.png';
 const Footer = () => {
     return (
-        <div className="md:w-[85%] mx-auto pt-12">
-            <footer className="footer p-10 bg-base-200 text-base-content">
+        <div className="md:w-[85%] mx-auto pt-12 dark:bg-black dark:text-white">
+            <footer className="footer p-10 text-base-content dark:bg-black dark:text-white">
                 <aside>
                     <img className='w-20' src={img1} alt="" />
                     <p className='text-3xl font-bold'>People Shop</p>
