@@ -4,8 +4,9 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 
 export const AuthContext = createContext(null);
 
+const auth = getAuth(app);
+
 const AuthProvider = ({ children }) => {
-    const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider()
 
     const [user, setUser] = useState(null);
@@ -19,10 +20,10 @@ const AuthProvider = ({ children }) => {
     const logout = () => {
         signOut(auth)
     }
-    const updateUserinfo = (name, photourl) => {
+    const updateUserinfo = (name, photoURL) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
-            photoURL: photourl
+            photoURL: photoURL
         })
     }
     const handelGoogleLogin = () => {

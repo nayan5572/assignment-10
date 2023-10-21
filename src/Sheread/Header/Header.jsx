@@ -1,6 +1,13 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
+    const { user, logout } = useContext(AuthContext)
+    const handelLogout = () => {
+        logout()
+
+    }
 
     const navLink = <>
 
@@ -8,9 +15,9 @@ const Header = () => {
         <li><NavLink className={({ isActive }) => isActive ? 'underline' : ''} to="/AllProduct">All Product</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? 'underline' : ''} to="/blog">Blog</NavLink></li>
         <div className="divider lg:divider-horizontal"></div>
-        <li><NavLink className={({ isActive }) => isActive ? 'underline' : ''} to="/myCard">My Card</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? 'underline' : ''} to="/addProduct">Add Product</NavLink></li>
-        <li><Link className="btn btn-success flex items-center content-center" to="/login">Login</Link></li>
+        {/* <li><NavLink className={({ isActive }) => isActive ? 'underline' : ''} to="/myCard">My Card</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? 'underline' : ''} to="/addProduct">Add Product</NavLink></li> */}
+        {/* <li><Link className="btn btn-success flex items-center content-center" to="/login">Login</Link></li> */}
 
     </>
 
@@ -30,6 +37,29 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navLink}
+                    {
+                        user ? <div className='flex justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={user?.email}>
+                            <div className="avatar placeholder">
+                                <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
+                                    <div className="w-24 rounded-full">
+                                        <img src={user ? user.photoURL : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ9Prvq8v6QqrdmLk_5w4PK3NcujPmDSZ9Kfe_SZdNdQ&s"} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <li><NavLink className={({ isActive }) =>
+                                isActive ? "underline text-error" : ""
+                            }
+                                to={"/myCard"}>My Card</NavLink></li>
+                            <li><NavLink className={({ isActive }) =>
+                                isActive ? "underline text-error" : ""
+                            }
+                                to={"/addProduct"}>Add A Product</NavLink></li>
+                            <button onClick={handelLogout} className='btn btn-success'>Logout</button>
+                        </div>
+
+                            : <li><Link className='btn btn-error' to={"/login"}>Login</Link></li>
+                    }
                 </ul>
             </div>
             <div className="navbar-end">
