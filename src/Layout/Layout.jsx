@@ -5,8 +5,12 @@ import Footer from "../Sheread/Footer/Footer";
 const Layout = () => {
     return (
         <div>
+            <div className="bg-white dark:bg-black dark:text-white">
+                <div className="md:w-[85%] mx-auto">
+                    <Header></Header>
+                </div>
+            </div>
             <div className='md:w-[85%] mx-auto'>
-                <Header></Header>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

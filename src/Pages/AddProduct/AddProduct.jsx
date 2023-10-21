@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
 
@@ -33,12 +34,17 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
             })
     }
 
 
     return (
-        <div className='my-10'>
+        <div className='my-10 dark:bg-black dark:text-white'>
             <h1 className='text-4xl font-bold'>
                 Now <span className='text-success'>Add A Product</span>
             </h1>

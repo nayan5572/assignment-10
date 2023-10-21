@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             {
                 path: "/myCard",
                 element: <PrivateRouter><MyCard></MyCard></PrivateRouter>,
-                loader: () => fetch('http://localhost:2000/addProduct')
+                loader: () => fetch('https://assignment-10-server-rg25jtfwp-halder25572.vercel.app/addProduct')
             },
             {
                 path: "/blog",
@@ -50,12 +50,12 @@ const router = createBrowserRouter([
             {
                 path: "/updateData/:id",
                 element: <PrivateRouter><UpdateData></UpdateData></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:2000/addProduct/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-rg25jtfwp-halder25572.vercel.app/addProduct/${params.id}`)
             },
             {
                 path: '/viewProductDetails/:id',
                 element: <PrivateRouter><ViewProductDetails></ViewProductDetails></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:2000/addProduct/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-rg25jtfwp-halder25572.vercel.app/addProduct/${params.id}`)
             }
         ]
     },

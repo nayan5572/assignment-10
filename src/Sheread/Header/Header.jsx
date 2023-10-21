@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import img1 from '../../assets/logo.png';
+import { FaMoon } from "react-icons/fa";
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext)
@@ -67,7 +68,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a onClick={toggleTheme} className="btn">Dark Mode</a>
+                <a onClick={toggleTheme} className="btn"> <FaMoon></FaMoon> Dark Mode</a>
             </div>
         </div>
     );

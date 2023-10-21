@@ -8,7 +8,7 @@ const AllProduct = () => {
 
 
         useEffect(() => {
-            fetch(`http://localhost:2000/addProduct`)
+            fetch(`https://assignment-10-server-mkxinqgob-halder25572.vercel.app/addProduct`)
                 .then(res => res.json())
                 .then(data => setProductData(data))
         }, [])
