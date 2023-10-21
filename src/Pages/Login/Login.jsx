@@ -6,7 +6,7 @@ import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
 
-    const { logInUser, googleLogin } = useContext(AuthContext);
+    const { logInUser, handelGoogleLogin } = useContext(AuthContext);
 
 
 
@@ -52,9 +52,11 @@ const Login = () => {
 
     // SignIn With Google
     const handleLoginGoogle = () => {
-        googleLogin()
+        handelGoogleLogin()
             .then(result => {
                 console.log(result.user)
+                setError("")
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error)

@@ -38,7 +38,7 @@ const Header = () => {
                 <ul className="menu menu-horizontal px-1">
                     {navLink}
                     {
-                        user ? <div className='flex justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={user?.email}>
+                        user ? <div className='flex justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
                             <div className="avatar placeholder">
                                 <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
                                     <div className="w-24 rounded-full">
@@ -58,7 +58,7 @@ const Header = () => {
                             <button onClick={handelLogout} className='btn btn-success'>Logout</button>
                         </div>
 
-                            : <li><Link className='btn btn-error' to={"/login"}>Login</Link></li>
+                            : <li><Link className='btn btn-error flex items-center content-center' to={"/login"}>Login</Link></li>
                     }
                 </ul>
             </div>
