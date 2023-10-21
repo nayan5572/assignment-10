@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import img1 from '../../assets/logo.png';
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext)
@@ -21,6 +22,7 @@ const Header = () => {
 
     </>
 
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -32,7 +34,10 @@ const Header = () => {
                         {navLink}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <a className="btn btn-ghost normal-case text-xl">
+                    <img className="w-10" src={img1} alt="website logo" />
+                    <p>People Shop</p>
+                </a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -64,6 +69,7 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 <a className="btn">Learn More</a>
+
             </div>
         </div>
     );

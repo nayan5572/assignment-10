@@ -1,11 +1,25 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-// import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyCard = () => {
+    const { user } = useContext(AuthContext)
+    console.log(user?.email);
     const loadedUsers = useLoaderData();
 
-    const [users, setUsers] = useState(loadedUsers);
+    const [myData, setMyData] = useState(loadedUsers);
+
+
+    useEffect(() => {
+        if (!user) {
+            return
+        }
+        fetch(`http://localhost:2000/addProduct/?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setMyData(data))
+    }, [user]);
+
 
 
     // handle delete data from server
@@ -20,15 +34,20 @@ const MyCard = () => {
                     console.log('deleted successfully', data);
 
                     // remove the user from the UI
-                    const remainingUsers = users && users.filter(user => user._id !== _id);
-                    setUsers(remainingUsers);
+                    const remainingUsers = myData && myData.filter(user => user._id !== _id);
+                    setMyData(remainingUsers);
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
                 }
             })
     }
 
     return (
         <div>
-            <h2>My Card: {users.length}</h2>
+            <h2>My Card: {myData.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -49,7 +68,7 @@ const MyCard = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map(product => <tr key={product._id}>
+                            myData.map(product => <tr key={product._id}>
                                 <th>
                                     <label>
                                         <input type="checkbox" className="checkbox" />

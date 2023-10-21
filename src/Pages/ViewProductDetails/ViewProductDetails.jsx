@@ -4,13 +4,12 @@ const ViewProductDetails = () => {
 
     const loaderData = useLoaderData()
     console.error("View My Error", loaderData);
-    
+
     const { pictureURL, name, price, rating, description } = loaderData || {}
 
 
     return (
-     
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100 shadow-xl mx-auto pt-12">
             <figure><img src={pictureURL} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="text-center font-bold text-3xl">
